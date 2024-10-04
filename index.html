@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="x-icon" href="images/elGroIcon.png">
+    <title>Customer Support and Dispatch SOP</title>
+    <style>
+        body {
+            background-color: #dedede;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .ag-format-container {
+            width: 1142px;
+            margin: 0 auto;
+        }
+        .ag-courses_box {
+            display: flex;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            padding: 50px 0;
+        }
+        .ag-courses_item {
+            flex-basis: calc(33.33333% - 30px);
+            margin: 0 15px 30px;
+            overflow: hidden;
+            border-radius: 28px;
+        }
+        .ag-courses-item_link {
+            display: block;
+            padding: 30px 20px;
+            background-color: #002401;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none; /* Add this line to remove the underline */
+
+        }
+        .ag-courses-item_link:hover,
+        .ag-courses-item_link:hover .ag-courses-item_date {
+            text-decoration: none;
+            color: #FFF;
+        }
+        .ag-courses-item_link:hover .ag-courses-item_bg {
+            transform: scale(10);
+        }
+        .ag-courses-item_title {
+            min-height: 87px;
+            margin: 0 0 25px;
+            overflow: hidden;
+            font-weight: bold;
+            font-size: 30px;
+            color: #FFF;
+            z-index: 2;
+            position: relative;
+        }
+        .ag-courses-item_date-box {
+            font-size: 18px;
+            color: #FFF;
+            z-index: 2;
+            position: relative;
+        }
+        .ag-courses-item_date {
+            font-weight: bold;
+            color: #18b83b;
+            transition: color .5s ease;
+        }
+        .ag-courses-item_bg {
+            height: 128px;
+            width: 128px;
+            background-color: #09a32a;
+            z-index: 1;
+            position: absolute;
+            top: -75px;
+            right: -75px;
+            border-radius: 50%;
+            transition: all .5s ease;
+        }
+        .ag-courses_item:nth-child(2n) .ag-courses-item_bg {
+            background-color: #09a32a;
+        }
+        .ag-courses_item:nth-child(3n) .ag-courses-item_bg {
+            background-color: #09a32a;
+        }
+        .ag-courses_item:nth-child(4n) .ag-courses-item_bg {
+            background-color: #09a32a;
+        }
+        .ag-courses_item:nth-child(5n) .ag-courses-item_bg {
+            background-color: #09a32a;
+        }
+        .ag-courses_item:nth-child(6n) .ag-courses-item_bg {
+            background-color: #09a32a;
+        }
+        @media only screen and (max-width: 979px) {
+            .ag-courses_item {
+                flex-basis: calc(50% - 30px);
+            }
+            .ag-courses-item_title {
+                font-size: 24px;
+            }
+        }
+        @media only screen and (max-width: 767px) {
+            .ag-format-container {
+                width: 96%;
+            }
+        }
+        @media only screen and (max-width: 639px) {
+            .ag-courses_item {
+                flex-basis: 100%;
+            }
+            .ag-courses-item_title {
+                min-height: 72px;
+                line-height: 1;
+                font-size: 24px;
+            }
+            .ag-courses-item_link {
+                padding: 22px 40px;
+            }
+            .ag-courses-item_date-box {
+                font-size: 16px;
+            }
+        }
+        img.img-fluid {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    margin: 10px; /* Optional: Adds some space from the edges */
+    max-width: 220px; /* Optional: Sets a maximum width to ensure it doesn't occupy too much space */
+
+
+}
+
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed positioning */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0, 0, 0, 0.7); /* Black with opacity */
+    overflow: hidden; /* Prevent scrolling of the modal background */
+}
+
+.modal-content {
+    background-color: #ffffff; /* Dark background for the modal */
+    margin: auto; /* Center the modal */
+    padding: 20px;
+    width: 80%; /* Width of the modal */
+    max-width: 600px; /* Maximum width for larger screens */
+    border-radius: 10px;
+    color: rgb(0, 0, 0); /* Set text color to black */
+    position: relative; /* Ensure position context for centering */
+    top: 50%; /* Move down 50% of the viewport height */
+    transform: translateY(-50%); /* Adjust to center vertically */
+    max-height: 80vh; /* Maximum height of the modal */
+    overflow-y: auto; /* Enable vertical scrolling for the content */
+    max-height: 80vh; /* Maximum height of the modal */
+    overflow-y: auto; /* Enable vertical scrolling for the content */
+}
+
+/* Custom scrollbar styles */
+.modal-content::-webkit-scrollbar {
+    width: 6px; /* Width of the scrollbar */
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #f9f9f9; /* Track color */
+    border-radius: 10px; /* Rounded corners for the track */
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: #898989; /* Color of the scrollbar handle */
+    border-radius: 10px; /* Rounded corners for the scrollbar handle */
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: #000000; /* Darker shade on hover */
+}
+
+.close-button {
+    color: #aaa; /* Color for close button */
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: rgb(109, 106, 106); /* Change close button color on hover */
+    text-decoration: none;
+}
+body.no-scroll {
+    overflow: hidden; /* Prevent scrolling */
+}
+    </style>
+</head>
+<body>
+    <img src="test/Icone.png" class="img-fluid" alt="...">
+
+    <div class="ag-format-container">
+        <div class="ag-courses_box">
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title"> Purpose </div>
+                    <div class="ag-courses-item_date-box">
+                        Updated at: <span class="ag-courses-item_date">September  2024</span>
+                    </div>
+                </a>
+            </div>
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Scope</div>
+                    <div class="ag-courses-item_date-box">
+                        Updated at: <span class="ag-courses-item_date">September  2024</span>
+                    </div>
+                </a>
+            </div>
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Responsibilities</div>
+                    <div class="ag-courses-item_date-box">
+                        Updated at: <span class="ag-courses-item_date">September  2024</span>
+                    </div>
+                </a>
+            </div>
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Key Communication Channels</div>
+                    <div class="ag-courses-item_date-box">
+                        Updated at: <span class="ag-courses-item_date">September  2024</span>
+                    </div>
+                </a>
+            </div>
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">SOP for CS-Dispatch Interactions</div>
+                    <div class="ag-courses-item_date-box">
+                        Updated at: <span class="ag-courses-item_date">September  2024</span>
+                    </div>
+                </a>
+            </div>
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Important Notes</div>
+                    <div class="ag-courses-item_date-box">
+                        Updated at: <span class="ag-courses-item_date">September  2024</span>
+                    </div>
+                </a>
+            </div>
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Performance Monitoring and Escalation</div>
+                    <div class="ag-courses-item_date-box">
+                        Updated at: <span class="ag-courses-item_date">September  2024</span>
+                    </div>
+                </a>
+            </div>
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Version Control</div>
+                    <div class="ag-courses-item_date-box">
+                        Updated at: <span class="ag-courses-item_date">September  2024</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div id="contentText"></div>
+        </div>
+    </div>
+    <script>
+
+document.addEventListener("DOMContentLoaded", function() {
+    const modal = document.getElementById("modal");
+    const closeButton = document.querySelector(".close-button");
+    const contentText = document.getElementById("contentText");
+
+    const cardContent = {
+        "Purpose":    `  <h1>Purpose</h1>
+<p>To outline the collaboration process between the CS team and the Dispatch team to ensure smooth, timely, and cost-effective delivery of customer orders. This SOP includes key communication protocols, escalation guidelines, and return/replacement procedures.</p>
+`,
+        "Scope": `<h1>Scope</h1>
+<p>This SOP applies to all Customer Support Agents (CSRs) and the Dispatch Team handling delivery-related tasks for orders placed via the elGrocer by Smiles application. It covers updating customer information, managing delivery zones, handling late orders, and managing return/replacement requests.</p>
+`,
+        "Responsibilities":`   <h1>Responsibilities</h1>
+<ul>
+    <li>Customer Support Agents (CSRs): Responsible for assisting customers with delivery-related issues and working with the Dispatch Team to ensure smooth order fulfillment.</li>
+    <li>Dispatch Team: Responsible for guiding and navigating drivers to deliver orders on time and at the lowest cost.</li>
+</ul>
+`,
+        "Key Communication Channels": `<h1>Key Communication Channels</h1>
+<ul>
+    <li>Slack Channel: <strong>Dispatch-CS</strong>
+        <ul>
+            <li>This channel will be used for real-time communication between the CS and Dispatch teams regarding delivery updates, changes, or escalations.</li>
+        </ul>
+    </li>
+</ul>
+
+`,
+        "SOP for CS-Dispatch Interactions": `<h1>SOP for CS-Dispatch Interactions</h1>
+
+<ul>
+    <li>Customer Information Update (Phone Number and Address)
+        <ul>
+            <li>Phone Number Update:
+                <p>If the customer requests to update their phone number for delivery purposes, inform the Dispatch Team on Slack immediately to avoid wasting the driver's time. This ensures the driver can reach the customer directly.</p>
+            </li>
+            <li>Address Update:
+                <ul>
+                    <li>Before confirming the address change to the customer, check if the new location falls within the same delivery zone as the store:
+                        <ul>
+                            <li>If in the same delivery zone: Confirm with the customer that the delivery will proceed to the new location.</li>
+                            <li>If out of the delivery zone: Apologize to the customer and explain that delivery cannot be made to the new location. Kindly ask the customer to cancel the order, update their location, and select stores available within their new delivery zone.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>Customer Notes (Special Instructions):
+                <p>If the customer forgot to add notes (e.g., “Don’t ring the bell,” “Leave at doorstep”), inform the Dispatch Team on Slack to ensure the driver adheres to the customer’s instructions.</p>
+            </li>
+        </ul>
+    </li>
+    <li>Handling Late Orders
+        <ul>
+            <li>Standard Late Order Query:
+                <p>When the customer complains that their order is late, do not immediately ask the Dispatch Team for an ETA. Instead, use the Locus navigation tool to check the driver’s status and details. Provide the driver’s information to the customer if requested.</p>
+            </li>
+            <li>Late Order Exceeding Delivery Slot:
+                <p>If the order exceeds the allocated delivery slot hours, escalate to the Dispatch Team on Slack to prioritize the delivery as soon as possible.</p>
+            </li>
+        </ul>
+    </li>
+    <li>Return, Replacement, and Missing Items
+        <ul>
+            <li>Return/Replacement Requests:
+                <ul>
+                    <li>Accept return or replacement requests only if the item is:
+                        <ul>
+                            <li>Wrongly delivered</li>
+                            <li>Damaged</li>
+                            <li>Expired</li>
+                        </ul>
+                    </li>
+                    <li>Check the item’s value:
+                        <ul>
+                            <li>For items above 20 AED: Raise the return/replacement request by filling out the <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=26NOW3wJZESGrnzQK0wWQpCXcjb0nqZJmSGYgJlPm2BUMzMySjhSSDZGTURDUUJVVFFUSEJOVVUwNCQlQCN0PWcu">Return/Replacement/Missing Item Request Form</a>.</li>
+                            <li>For items under 20 AED: Refund the customer directly.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>Missing Items:
+                <p>If an item was missed at the store (either by the picker or driver), raise a Return/Replacement/Missing Item Request directly via the form. Confirm with the store that the item was missed and that a driver will be assigned.</p>
+            </li>
+            <li>Form Link for Return/Replacement/Missing Items:
+                <p><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=26NOW3wJZESGrnzQK0wWQpCXcjb0nqZJmSGYgJlPm2BUMzMySjhSSDZGTURDUUJVVFFUSEJOVVUwNCQlQCN0PWcu">Return/Replacement/Missing Item Request Form</a></p>
+            </li>
+            <li>Confirmation with the Store:
+                <p>Before raising any request, confirm with the store that they will accept the return or replacement.</p>
+            </li>
+            <li>Suitable Time with the Customer:
+                <p>Confirm a suitable time for the customer to be available for the return/replacement delivery before raising the request.</p>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+`,
+        "Important Notes": ` <h1>Important Notes</h1>
+<ul>
+    <li>Allowed Time for Returns/Replacements/Missing Items:
+        <p>These requests can only be fulfilled between 10 AM and 8 PM. Requests for the first and last delivery slots of the day are not allowed.</p>
+    </li>
+    <li>Driver’s Shift:
+        <p>Drivers are available for delivery between 7 AM and 10 PM. Ensure all delivery-related requests are communicated to the Dispatch Team within this window.</p>
+    </li>
+</ul>
+
+
+`,
+        "Performance Monitoring and Escalation":`<h1>Performance Monitoring and Escalation</h1>
+<ul>
+    <li>Handling Late Orders:
+        <p>Ensure orders exceeding their delivery slots are escalated to the Dispatch Team for prioritization.</p>
+    </li>
+    <li>Compliance with SOP:
+        <p>Both the CS and Dispatch teams should follow this SOP to ensure efficient and timely delivery of customer orders.</p>
+    </li>
+</ul>
+
+`,
+"Version Control": `<h1>Version Control</h1>
+<ul>
+    <li>Version: 1.1</li>
+    <li>Last Updated: September 2024</li>
+    <li>Next Review: January 2025</li>
+    <li>Reviewed by: Customer Support & Logistics Managers</li>
+</ul>`
+    };
+
+    document.querySelectorAll('.ag-courses_item').forEach(item => {
+        item.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default anchor click behavior
+            const title = this.querySelector('.ag-courses-item_title').textContent.trim();
+            contentText.innerHTML = cardContent[title]; // Set the content HTML
+            modal.style.display = "block"; // Show the modal
+            document.body.classList.add('no-scroll'); // Add class to prevent body scrolling
+
+        });
+    });
+
+    closeButton.addEventListener('click', function() {
+        modal.style.display = "none"; // Hide the modal
+        document.body.classList.remove('no-scroll'); // Remove class to allow scrolling again
+
+    });
+
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none"; // Hide the modal if outside of it is clicked
+            document.body.classList.remove('no-scroll'); // Remove class to allow scrolling again
+
+        }
+    });
+});
+    </script>
+</body>
+</html>
